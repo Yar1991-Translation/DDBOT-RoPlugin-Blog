@@ -1,1 +1,45 @@
 # DDBOT-RoPlugin-Blog
+# DDBOT 更新日志  
+> 版本：2025-06-15  
+> 作者：Yar1991-Translation
+
+## ✨ 主要特性
+1. **Roblox 插件全面重构**  
+   - `RobloxConcern` 接入 `StateManager`，订阅真正生效。  
+   - 统一 `httpClient`，启用连接复用、超时控制。  
+   - 新增辅助方法 `apiGet` / `apiPost`，异常处理更健壮。  
+
+2. **指令体系升级**  
+   - `/roblox`  
+     - `info`：查询用户信息（支持 UID/用户名）。  
+     - `watch | unwatch`：订阅 / 取消 `user | game | friend`，群聊私聊皆可用。  
+     - `list`：列出群内 Roblox 订阅。  
+   - `/blog`（仅管理员私聊）  
+     - 将最新更新日志推送至所有存在订阅的群聊。  
+
+3. **自动更新日志推送**  
+   - 启动时自动从 **GitHub 仓库**  
+     `Yar1991-Translation/DDBOT-RoPlugin-Blog`  
+     拉取 `README.md` 作为更新源。  
+   - Markdown 渲染为 PNG 后发送，保证排版一致。  
+   - 使用 `Last-Modified` 作为版本号，确保同一版本只推送一次。  
+   - 管理员可通过 `/退订更新` 关闭后续系统更新提醒。
+
+## 🛠 其他改进
+- `/watch -s roblox` 等旧指令保持兼容。  
+- 命令注册表补充 `BlogCommand`、`RobloxCommand`，支持 `enable / disable` 控制。  
+- `mmsg.Image` 新增 Base64 直传，减少上传失败概率。  
+- 依赖升级：`golang.org/x/image` 用于文本转图片渲染。  
+
+## 🐛 Bug 修复
+- 修复多处潜在空指针及 HTTP 重试逻辑。  
+- 统一私聊 / 群聊日志字段，避免 `localutils` 未导入导致的编译错误。  
+
+## 🔧 向后兼容
+- 所有数据库结构兼容旧版本，无需迁移。  
+- 旧订阅与权限配置保留，升级后可立即使用。  
+
+---
+
+**感谢您的支持！**  
+如需关闭此类内部更新通知，请联系管理关闭对应的群聊推送！
