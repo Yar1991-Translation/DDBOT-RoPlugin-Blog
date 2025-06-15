@@ -1,4 +1,4 @@
-# DDBOT-RoPlugin-Blog
+
 # DDBOT 更新日志  
 > 版本：2025-06-15  
 > 作者：Yar1991-Translation
